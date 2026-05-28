@@ -52,7 +52,7 @@ When a large Knowledge Base (KB) grows outdated, support analysts spend many hou
 
 ### Visual Architecture
 ![Knowledge Base Auditor Workflow](./knowledge_base_auditor/assets/auditor_flow_canvas.png)
-This orchestration pipeline queries a PostgreSQL knowledge index, determines whether existing documentation already exists, and conditionally generates new KB drafts while logging execution state and API failures.
+This orchestration pipeline processes resolution notes extracted from support tickets, checks a PostgreSQL knowledge index for existing documentation, and conditionally generates new knowledge base articles when no match is found, while logging execution state and API errors for observability.
 
 ### Business Impact
 
