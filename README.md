@@ -6,7 +6,7 @@ These systems replace high-latency manual dispatching and redundant documentatio
 
 ---
 
-## 🚀 Project 1: Omni-Channel Ticket Triage Engine
+## Project 1: Omni-Channel Ticket Triage Engine
 
 **Folder:** `/01_omnichannel_triage_engine`
 
@@ -32,7 +32,7 @@ Support requests arrive unstructured from multiple inbound channels (inbound ema
 
 ---
 
-## 🧠 Project 2: Self-Healing Knowledge Base Auditor
+## Project 2: Self-Healing Knowledge Base Auditor
 
 **Folder:** `/02_knowledge_base_auditor`
 
@@ -60,7 +60,7 @@ When a large Knowledge Base (KB) grows outdated, support analysts spend many hou
 
 ---
 
-## 🗄️ Database Schemas (Supabase / PostgreSQL)
+## Database Schemas (Supabase / PostgreSQL)
 
 This architecture relies on persistent state management to track execution logic, halt redundant workflows, and log API failures. Below are the core table schemas powering the observability layer.
 
