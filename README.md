@@ -8,7 +8,7 @@ These systems replace high-latency manual dispatching and redundant documentatio
 
 ## Project 1: Omni-Channel Ticket Triage Engine
 
-**Folder:** `/01_omnichannel_triage_engine`
+**Folder:** `/omnichannel_triage_engine`
 
 ### The Problem
 
@@ -34,7 +34,7 @@ Support requests arrive unstructured from multiple inbound channels (inbound ema
 
 ## Project 2: Self-Healing Knowledge Base Auditor
 
-**Folder:** `/02_knowledge_base_auditor`
+**Folder:** `/knowledge_base_auditor`
 
 ### The Problem
 
