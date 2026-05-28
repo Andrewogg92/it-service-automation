@@ -1,5 +1,9 @@
 # Self-Healing Knowledge Base Auditor
 
+## System Overview
+
+This system is an AI-driven knowledge base automation pipeline designed to evaluate support ticket resolution notes, determine whether existing documentation already exists in a structured knowledge index, and conditionally generate new knowledge base articles when needed. The system maintains persistent state through a PostgreSQL backend and logs execution outcomes for observability and auditability.
+
 This folder contains the orchestration blueprint and database schemas for the AI Auditor and Drafter system.
 
 ### Contents
