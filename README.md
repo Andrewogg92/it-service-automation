@@ -1,8 +1,9 @@
 # Enterprise IT Service Automation Portfolio
 
-This repository contains two production-grade, event-driven AI Operations designed to streamline IT Service Management (ITSM).
+This repository contains two event-driven AI workflow systems for IT service operations.
 
-These systems replace high-latency manual dispatching and redundant documentation drafting with a stateful AI orchestration layer, resulting in organizational time savings.
+Designed and built these systems to reduce manual dispatching and repetitive documentation workflows through stateful AI orchestration and event-driven automation.
+
 
 ---
 
@@ -47,7 +48,7 @@ When a large Knowledge Base (KB) grows outdated, support analysts spend many hou
   * **Tier 1 (The Auditor):** Extracts keywords from inbound ticket resolutions, queries the database, and deterministically decides if a duplicate KB exists. If it does, the workflow halts.
   * **Tier 2 (The Drafter):** If no KB exists, the AI autonomously drafts a new, formatted Wiki in Google Docs.
 * **The "Self-Healing" Loop:** Automatically indexes newly generated AI drafts back into the PostgreSQL database, ensuring the system learns and blocks duplicates in real-time.
-* **Enterprise Resiliency:** Built comprehensive Try/Catch error-handler routes around volatile OpenAI endpoints, logging detailed failure payloads to guarantee zero workflow downtime.
+* **Reliability & Error Handling:** Built comprehensive Try/Catch error-handler routes around volatile OpenAI endpoints, reducing workflow interruptions caused by API failures.
 
 ### Visual Architecture
 *(Note: Ensure your uploaded image in the assets folder matches this file name exactly!)*
