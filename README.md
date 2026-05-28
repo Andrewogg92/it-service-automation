@@ -47,7 +47,7 @@ When a large Knowledge Base (KB) grows outdated, support analysts spend many hou
 * **Two-Tier AI Routing:**
   * **Tier 1 (The Auditor):** Extracts keywords from inbound ticket resolutions, queries the database, and deterministically decides if a duplicate KB exists. If it does, the workflow halts.
   * **Tier 2 (The Drafter):** If no KB exists, the AI autonomously drafts a new, formatted Wiki in Google Docs.
-* **The "Self-Healing" Loop:** Automatically indexes newly generated AI drafts back into the PostgreSQL database, ensuring the system learns and blocks duplicates in real-time.
+* **The "Self-Healing" Loop:** AAutomatically indexes newly generated AI drafts back into the PostgreSQL database, allowing future workflows to identify and prevent duplicate KB generation.
 * **Reliability & Error Handling:** Built comprehensive Try/Catch error-handler routes around volatile OpenAI endpoints, reducing workflow interruptions caused by API failures.
 
 ### Visual Architecture
@@ -77,3 +77,14 @@ CREATE TABLE execution_logs (
   ai_verdict TEXT,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now())
 );
+
+## Engineering Concepts Demonstrated
+
+* Event-driven workflow orchestration
+* Deterministic AI output handling
+* API integration and webhook ingestion
+* Persistent state management
+* Observability and execution logging
+* AI-assisted workflow automation
+* PostgreSQL-backed indexing and retrieval
+* Error handling and retry routing
