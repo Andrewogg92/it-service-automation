@@ -23,8 +23,8 @@ Support requests arrive unstructured from multiple inbound channels (inbound ema
 * **Observability:** Logged all classification outcomes into a mock staging database (Google Sheets) designed to map 1:1 with ServiceNow schemas.
 
 ### Visual Architecture
-*(Note: Ensure your uploaded image in the assets folder matches this file name exactly!)*
 ![Omni-Channel Triage Workflow](./omnichannel_triage_engine/assets/triage_flow_canvas.png)
+This scenario ingests inbound support events, classifies requests using GPT-4o, validates deterministic JSON outputs, and routes structured payloads into a mock ServiceNow staging layer for downstream handling.
 
 ### The Impact
 
@@ -51,8 +51,8 @@ When a large Knowledge Base (KB) grows outdated, support analysts spend many hou
 * **Reliability & Error Handling:** Built comprehensive Try/Catch error-handler routes around volatile OpenAI endpoints, reducing workflow interruptions caused by API failures.
 
 ### Visual Architecture
-*(Note: Ensure your uploaded image in the assets folder matches this file name exactly!)*
 ![Knowledge Base Auditor Workflow](./knowledge_base_auditor/assets/auditor_flow_canvas.png)
+This orchestration pipeline queries a PostgreSQL knowledge index, determines whether existing documentation already exists, and conditionally generates new KB drafts while logging execution state and API failures.
 
 ### Business Impact
 
