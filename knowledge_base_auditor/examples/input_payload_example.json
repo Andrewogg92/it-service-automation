@@ -1,0 +1,4 @@
+{
+  "ticket_id": "INC-88329",
+  "resolution_notes": "User states they cannot log into their Google Workspace account. Keep getting a password mismatch error on the Okta landing page after resetting password."
+}
