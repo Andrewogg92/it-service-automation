@@ -77,14 +77,3 @@ CREATE TABLE execution_logs (
   ai_verdict TEXT,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now())
 );
-
-## Engineering Concepts Demonstrated
-
-* Event-driven workflow orchestration
-* Deterministic AI output handling
-* API integration and webhook ingestion
-* Persistent state management
-* Observability and execution logging
-* AI-assisted workflow automation
-* PostgreSQL-backed indexing and retrieval
-* Error handling and retry routing
