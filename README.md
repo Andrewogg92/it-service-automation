@@ -23,7 +23,7 @@ Support requests arrive unstructured from multiple inbound channels (inbound ema
 
 ### Visual Architecture
 *(Note: Ensure your uploaded image in the assets folder matches this file name exactly!)*
-![Omni-Channel Triage Workflow](./01_omnichannel_triage_engine/assets/triage_flow_canvas.png)
+![Omni-Channel Triage Workflow](./omnichannel_triage_engine/assets/triage_flow_canvas.png)
 
 ### The Impact
 
@@ -51,7 +51,7 @@ When a large Knowledge Base (KB) grows outdated, support analysts spend many hou
 
 ### Visual Architecture
 *(Note: Ensure your uploaded image in the assets folder matches this file name exactly!)*
-![Knowledge Base Auditor Workflow](./02_knowledge_base_auditor/assets/auditor_flow_canvas.png)
+![Knowledge Base Auditor Workflow](./knowledge_base_auditor/assets/auditor_flow_canvas.png)
 
 ### Business Impact
 
