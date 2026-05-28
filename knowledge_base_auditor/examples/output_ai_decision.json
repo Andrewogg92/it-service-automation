@@ -1,0 +1,6 @@
+{
+  "needs_draft": true,
+  "topic": "Google Workspace Password Reset Failure After Okta",
+  "reason": "The resolution notes describe a specific failure condition with Okta and Google Workspace that is not covered in the existing knowledge base.",
+  "keyword": "password"
+}
