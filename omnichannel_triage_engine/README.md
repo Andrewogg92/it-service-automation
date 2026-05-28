@@ -1,5 +1,9 @@
 # Omni-Channel Ticket Triage Engine
 
+## System Overview
+
+This system is an event-driven AI classification and routing engine that ingests unstructured support requests from multiple channels, normalizes incoming data via webhooks, and uses an LLM-based classifier to determine issue type and routing destination. Structured outputs are generated using deterministic JSON parsing and logged into a staging database for downstream ITSM integration.
+
 This folder contains the core assets for the AI classification and routing engine.
 
 ### Contents
