@@ -1,13 +1,45 @@
-# Enterprise IT Service Automation Portfolio
+# ⚾ Enterprise IT Service Automation Suite
 
-This repository contains two event-driven AI workflow systems for IT service operations.
+This repository contains a portfolio of event-driven AI and data-automation systems designed for enterprise IT service operations.
 
-Designed and built these systems to reduce manual dispatching and repetitive documentation workflows through stateful AI orchestration and event-driven automation.
+I designed and built these systems to solve three core business problems:
+1.  **Forecasting** team capacity against dynamic business and travel schedules.
+2.  **Automating** manual ticket dispatching and triage.
+3.  **Eliminating** repetitive documentation workflows through a self-healing knowledge base.
 
+The suite leverages a modern data stack, including Python, PostgreSQL (Supabase), event-driven webhooks (Make.com), and stateful AI orchestration.
 
 ---
 
-## Project 1: Omni-Channel Ticket Triage Engine
+## **Project 1: Workforce Capacity & Demand Planner (Flagship Project)**
+
+**Folder:** `/capacity-demand-planner`
+
+### **The Problem**
+
+Forecasting IT support capacity is often a manual, spreadsheet-driven process that fails to account for the overlapping, dynamic nature of corporate travel, PTO, and fluctuating ticket volumes. This leads to inaccurate staffing estimates and puts service levels at risk.
+
+### **The Architecture & Solution**
+
+*   **Relational Database Core:** Built a normalized PostgreSQL database (Supabase) to serve as the single source of truth for all staffing, demand, and scheduling data.
+*   **Dynamic Capacity Calculation:** The system ingests master travel and event calendars and automatically performs daily capacity deductions. It correctly calculates the impact of multiple analysts being unavailable on the same day due to overlapping events.
+*   **Remote Calculation Engine:** A Flask API, deployed on PythonAnywhere, receives webhook data and executes the core mathematical forecasting logic, processing thousands of records to calculate daily team utilization and staffing gaps.
+*   **Interactive "What-If" Simulation:** The Streamlit frontend includes a demand multiplier slider, allowing leaders to instantly simulate the impact of a 30% spike in service demand without altering the underlying database.
+*   **AI-Generated Executive Briefings:** After the math is complete, an AI layer generates a concise, natural-language summary of the weekly capacity outlook, highlighting key risks and trends.
+
+### **Visual Architecture**
+
+This system uses a multi-layered architecture where a Streamlit dashboard triggers a Make.com webhook, which pulls live data from Supabase, sends it to a Python Flask API for heavy computation, and returns a complete, visualized forecast with an AI summary back to the user—all in real-time.
+
+### **The Impact**
+
+*   **Provides 100% data-driven, mathematically sound weekly staffing forecasts.**
+*   Eliminates manual spreadsheet work and subjective capacity planning.
+*   Gives leadership an instant, interactive tool to simulate high-demand scenarios and make proactive staffing decisions.
+
+---
+
+## Project 2: Omni-Channel Ticket Triage Engine
 
 **Folder:** `/omnichannel_triage_engine`
 
@@ -33,7 +65,7 @@ This scenario ingests inbound support events, classifies requests using GPT-4o, 
 
 ---
 
-## Project 2: Self-Healing Knowledge Base Auditor
+## Project 3: Self-Healing Knowledge Base Auditor
 
 **Folder:** `/knowledge_base_auditor`
 
