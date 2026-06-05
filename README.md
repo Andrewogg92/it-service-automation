@@ -1,6 +1,6 @@
 # ⚾ Enterprise IT Service Automation Suite
 
-This repository contains a portfolio of event-driven AI and data-automation systems designed for enterprise IT service operations.
+This repository contains a portfolio of event-driven AI and data-automation systems designed for IT  operations.
 
 I designed and built these systems to solve three core business problems:
 1.  **Forecasting** team capacity against dynamic business and travel schedules.
@@ -28,6 +28,7 @@ Forecasting IT support capacity is often a manual, spreadsheet-driven process th
 *   **AI-Generated Executive Briefings:** After the math is complete, an AI layer generates a concise, natural-language summary of the weekly capacity outlook, highlighting key risks and trends.
 
 ### **Visual Architecture**
+<img width="796" height="536" alt="Screenshot 2026-06-05 at 12 57 23 PM" src="https://github.com/user-attachments/assets/b635be35-d0b4-4a28-897a-f26df14ea242" />
 
 This system uses a multi-layered architecture where a Streamlit dashboard triggers a Make.com webhook, which pulls live data from Supabase, sends it to a Python Flask API for heavy computation, and returns a complete, visualized forecast with an AI summary back to the user—all in real-time.
 
