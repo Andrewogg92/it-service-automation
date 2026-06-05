@@ -7,7 +7,7 @@ I designed and built these systems to solve three core business problems:
 2.  **Automating** manual ticket dispatching and triage.
 3.  **Eliminating** repetitive documentation workflows through a self-healing knowledge base.
 
-The suite leverages a modern data stack, including Python, PostgreSQL (Supabase), event-driven webhooks (Make.com), and stateful AI orchestration.
+The suite leverages a modern data stack, including Python, PostgreSQL (Supabase), event-driven webhooks (Make.com).
 
 ---
 
@@ -64,7 +64,7 @@ This scenario ingests inbound support events, classifies requests using GPT-4o, 
 
 ### The Impact
 
-* **Eliminated ~8-9 hours of manual ticket triage per week.**
+* **Estimated to Eliminate ~8-9 hours of manual ticket triage per week.**
 * Achieved zero-touch ticket routing to the correct resolution queues.
 
 ---
@@ -83,7 +83,7 @@ When a large Knowledge Base (KB) grows outdated, support analysts spend many hou
 * **Two-Tier AI Routing:**
   * **Tier 1 (The Auditor):** Extracts keywords from inbound ticket resolutions, queries the database, and deterministically decides if a duplicate KB exists. If it does, the workflow halts.
   * **Tier 2 (The Drafter):** If no KB exists, the AI autonomously drafts a new, formatted Wiki in Google Docs.
-* **The "Self-Healing" Loop:** AAutomatically indexes newly generated AI drafts back into the PostgreSQL database, allowing future workflows to identify and prevent duplicate KB generation.
+* **The "Self-Healing" Loop:** Automatically indexes newly generated AI drafts back into the PostgreSQL database, allowing future workflows to identify and prevent duplicate KB generation.
 * **Reliability & Error Handling:** Built comprehensive Try/Catch error-handler routes around volatile OpenAI endpoints, reducing workflow interruptions caused by API failures.
 
 ### Visual Architecture
@@ -92,7 +92,7 @@ This orchestration pipeline processes resolution notes extracted from support ti
 
 ### Business Impact
 
-* **Eliminated an estimated 20-30 hours of manual documentation toil per month.**
+* **Estimated to eliminate 20-30 hours of manual documentation toil per month.**
 * Ensured 100% documentation coverage for new issues while preventing duplicate work.
 
 ---
@@ -113,3 +113,17 @@ CREATE TABLE execution_logs (
   ai_verdict TEXT,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now())
 );
+
+## Skills Demonstrated
+
+- AI Workflow Engineering
+- Data Modeling
+- API Development
+- Automation Architecture
+- Business Process Automation
+- Prompt Engineering
+- SQL / PostgreSQL
+- Event-Driven Systems
+- Workforce Analytics
+- Operational Forecasting
+- Dashboard Development
