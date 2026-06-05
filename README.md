@@ -32,6 +32,9 @@ Forecasting IT support capacity is often a manual, spreadsheet-driven process th
 
 This system uses a multi-layered architecture where a Streamlit dashboard triggers a Make.com webhook, which pulls live data from Supabase, sends it to a Python Flask API for heavy computation, and returns a complete, visualized forecast with an AI summary back to the user—all in real-time.
 
+<img width="1895" height="881" alt="image" src="https://github.com/user-attachments/assets/d0c64184-57f6-43bf-b138-439042e7572c" />
+
+
 ### **The Impact**
 
 *   **Provides 100% data-driven, mathematically sound weekly staffing forecasts.**
