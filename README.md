@@ -1,4 +1,4 @@
-# ⚾ Enterprise IT Service Automation Suite
+# Enterprise IT Service Automation Suite
 
 This repository contains a portfolio of event-driven AI and data-automation systems designed for IT  operations.
 
