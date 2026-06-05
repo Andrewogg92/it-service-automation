@@ -22,15 +22,15 @@ Forecasting IT support capacity is often a manual, spreadsheet-driven process th
 ### **The Architecture & Solution**
 
 *   **Relational Database Core:** Built a normalized PostgreSQL database (Supabase) to serve as the single source of truth for all staffing, demand, and scheduling data.
-*   **Dynamic Capacity Calculation:** The system ingests master travel and event calendars and automatically performs daily capacity deductions. It correctly calculates the impact of multiple analysts being unavailable on the same day due to overlapping events.
-*   **Remote Calculation Engine:** A Flask API, deployed on PythonAnywhere, receives webhook data and executes the core mathematical forecasting logic, processing thousands of records to calculate daily team utilization and staffing gaps.
+*   **Dynamic Capacity Calculation:** The system ingests staffing numbers, historical demand, and event calendars to automatically perform daily or weekly capacity deductions. It calculates the impact of multiple analysts being unavailable on the same day due to overlapping events.
+*   **Remote Calculation Engine:** A Flask API, deployed on PythonAnywhere, receives webhook data and executes the mathematical forecasting logic, processing the records to calculate daily team utilization and staffing potential gaps.
 *   **Interactive "What-If" Simulation:** The Streamlit frontend includes a demand multiplier slider, allowing leadership to simulate the impact of a 30% spike in service demand without altering the underlying database.
 *   **AI-Generated Executive Briefings:** After the math is complete, an AI layer generates a concise, natural-language summary of the weekly capacity outlook, highlighting key risks and trends.
 
 ### **Visual Architecture**
 <img width="796" height="536" alt="Screenshot 2026-06-05 at 12 57 23 PM" src="https://github.com/user-attachments/assets/b635be35-d0b4-4a28-897a-f26df14ea242" />
 
-This system uses a multi-layered architecture where a Streamlit dashboard triggers a Make.com webhook, which pulls live data from Supabase, sends it to a Python Flask API for heavy computation, and returns a complete, visualized forecast with an AI summary back to the user—all in real-time.
+This system uses a multi-layered architecture where a Streamlit dashboard triggers a Make.com webhook, which pulls live data from Supabase, sends it to a Python Flask API for computation, and returns a visualized forecast with an AI summary back to the user in real-time.
 
 <img width="1895" height="881" alt="image" src="https://github.com/user-attachments/assets/d0c64184-57f6-43bf-b138-439042e7572c" />
 
@@ -65,7 +65,7 @@ This scenario ingests inbound support events, classifies requests using GPT-4o, 
 ### The Impact
 
 * **Eliminated ~8-9 hours of manual ticket triage per week.**
-* Achieved instantaneous, zero-touch ticket routing to the correct resolution queues.
+* Achieved zero-touch ticket routing to the correct resolution queues.
 
 ---
 
