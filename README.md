@@ -17,14 +17,14 @@ The suite leverages a modern data stack, including Python, PostgreSQL (Supabase)
 
 ### **The Problem**
 
-Forecasting IT support capacity is often a manual, spreadsheet-driven process that fails to account for the overlapping, dynamic nature of corporate travel, PTO, and fluctuating ticket volumes. This leads to inaccurate staffing estimates and puts service levels at risk.
+Forecasting IT support capacity is often a manual, spreadsheet-driven process that struggles to account for the overlapping, dynamic nature of corporate travel, and fluctuating ticket volumes. This leads to inaccurate staffing estimates and puts service levels at risk.
 
 ### **The Architecture & Solution**
 
 *   **Relational Database Core:** Built a normalized PostgreSQL database (Supabase) to serve as the single source of truth for all staffing, demand, and scheduling data.
 *   **Dynamic Capacity Calculation:** The system ingests master travel and event calendars and automatically performs daily capacity deductions. It correctly calculates the impact of multiple analysts being unavailable on the same day due to overlapping events.
 *   **Remote Calculation Engine:** A Flask API, deployed on PythonAnywhere, receives webhook data and executes the core mathematical forecasting logic, processing thousands of records to calculate daily team utilization and staffing gaps.
-*   **Interactive "What-If" Simulation:** The Streamlit frontend includes a demand multiplier slider, allowing leaders to instantly simulate the impact of a 30% spike in service demand without altering the underlying database.
+*   **Interactive "What-If" Simulation:** The Streamlit frontend includes a demand multiplier slider, allowing leadership to simulate the impact of a 30% spike in service demand without altering the underlying database.
 *   **AI-Generated Executive Briefings:** After the math is complete, an AI layer generates a concise, natural-language summary of the weekly capacity outlook, highlighting key risks and trends.
 
 ### **Visual Architecture**
@@ -37,7 +37,7 @@ This system uses a multi-layered architecture where a Streamlit dashboard trigge
 
 ### **The Impact**
 
-*   **Provides 100% data-driven, mathematically sound weekly staffing forecasts.**
+*   **Provides data-driven, mathematically derived weekly staffing forecasts.**
 *   Eliminates manual spreadsheet work and subjective capacity planning.
 *   Gives leadership an instant, interactive tool to simulate high-demand scenarios and make proactive staffing decisions.
 
