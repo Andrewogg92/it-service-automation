@@ -11,7 +11,7 @@ The suite leverages a modern data stack, including Python, PostgreSQL (Supabase)
 
 ---
 
-## **Project 1: Workforce Capacity & Demand Planner (Flagship Project)**
+## **Project 1: Workforce Capacity & Demand Planner**
 
 **Folder:** `/capacity-demand-planner`
 
