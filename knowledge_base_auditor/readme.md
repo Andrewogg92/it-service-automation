@@ -21,9 +21,25 @@ Error handling is built in at the extraction and auditing steps — API failures
 
 ---
 
+## Mock knowledge base
+
+The system checks incoming tickets against a mock Confluence KB with 11 existing articles.
+
+![Mock Confluence KB](assets/mock_confluence_kb.png)
+
+---
+
+## KB index
+
+The PostgreSQL index tracks all existing and AI-generated articles by title and key phrases. This is what the auditor actually queries.
+
+![KB Index](assets/knowledge_base_index.png)
+
+---
+
 ## Sample output
 
-### AI-generated drafts
+When the auditor finds no existing article, it drafts a new one in Google Drive.
 
 ![Draft Folder](assets/ai_draft_folder.png)
 
@@ -33,7 +49,7 @@ Error handling is built in at the extraction and auditing steps — API failures
 
 ## Execution logs
 
-The system logs every decision the auditor makes, including the reasoning behind each halt.
+Every decision the auditor makes gets logged with the reasoning behind it.
 
 ![Execution Logs](assets/execution_logs.png)
 
@@ -41,24 +57,16 @@ The system logs every decision the auditor makes, including the reasoning behind
 
 ## Error logs
 
-API failures get caught and logged with the module name and error message for debugging.
+API failures get caught and logged with the module name and error message.
 
 ![Error Logs](assets/error_logs.png)
-
----
-
-## Knowledge base index
-
-The PostgreSQL index tracks all existing and pending KB articles by title and key phrases.
-
-![KB Index](assets/knowledge_base_index.png)
 
 ---
 
 ## What's in this repo
 
 - `KB_Auditor_Engine.blueprint.json`: the Make.com blueprint. Import directly into a Make.com workspace to replicate the full workflow
-- `/assets`: workflow canvas, draft folder, sample draft, execution logs, error logs, and KB index screenshots
+- `/assets`: all screenshots including workflow canvas, mock KB, index, drafts, and logs
 - `/examples`: sample input payload and AI decision output for reference
 
 ## How to import the blueprint
