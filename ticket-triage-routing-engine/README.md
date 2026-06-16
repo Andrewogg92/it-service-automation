@@ -14,6 +14,10 @@ Incoming support tickets used to get manually sorted and routed, which didn't sc
 4. **Parse AI Classification**: the JSON string from GPT gets parsed into discrete fields
 5. **Create ServiceNow Ticket (Mock)**: classified fields get written to a staging Google Sheet, simulating the ServiceNow ticket creation step
 
+## Sample output
+
+![Staging Log](assets/mock_servicenow_logs.png)
+
 ## What's in this repo
 
 - `Triage_Engine_v1.blueprint.json`: the Make.com blueprint. Import this directly into a Make.com workspace to replicate the full workflow
