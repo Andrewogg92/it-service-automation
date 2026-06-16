@@ -1,129 +1,79 @@
-# Enterprise IT Service Automation Suite
+# IT Service Automation Portfolio
 
-This repository contains a portfolio of event-driven AI and data-automation systems designed for IT  operations.
-
-I designed and built these systems to solve three core business problems:
-1.  **Forecasting** team capacity against dynamic business and travel schedules.
-2.  **Automating** manual ticket dispatching and triage.
-3.  **Eliminating** repetitive documentation workflows through a self-healing knowledge base.
-
-The suite leverages a modern data stack, including Python, PostgreSQL (Supabase), event-driven webhooks (Make.com).
+This repo contains three automation tools I built at MLB to fix operational problems I kept running into — manual ticket triage, guesswork-based staffing, and a knowledge base that nobody had time to maintain.
 
 ---
 
-## **Project 1: Workforce Capacity & Demand Planner**
+## Project 1: Workforce Capacity & Demand Planner
 
 **Folder:** `/capacity-demand-planner`
 
-### **The Problem**
+### The problem
 
-Forecasting IT support capacity is often a manual, spreadsheet-driven process that struggles to account for the overlapping, dynamic nature of corporate travel, and fluctuating ticket volumes. This leads to inaccurate staffing estimates and puts service levels at risk.
+Staffing decisions were being made based on gut feel and manual Excel pulls. Nobody had a clear picture of how ticket volume, travel schedules, and team availability overlapped on any given week.
 
-### **The Architecture & Solution**
+### What I built
 
-*   **Relational Database Core:** Built a normalized PostgreSQL database (Supabase) to serve as the single source of truth for all staffing, demand, and scheduling data.
-*   **Dynamic Capacity Calculation:** The system ingests staffing numbers, historical demand, and event calendars to automatically perform daily or weekly capacity deductions. It calculates the impact of multiple analysts being unavailable on the same day due to overlapping events.
-*   **Remote Calculation Engine:** A Flask API, deployed on PythonAnywhere, receives webhook data and executes the mathematical forecasting logic, processing the records to calculate daily team utilization and staffing potential gaps.
-*   **Interactive "What-If" Simulation:** The Streamlit frontend includes a demand multiplier slider, allowing leadership to simulate the impact of a 30% spike in service demand without altering the underlying database.
-*   **AI-Generated Executive Briefings:** After the math is complete, an AI layer generates a concise, natural-language summary of the weekly capacity outlook, highlighting key risks and trends.
+A forecasting tool that pulls live data from a PostgreSQL database, runs capacity calculations through a Python Flask API, and surfaces the results in a Streamlit dashboard with an AI-generated plain-English summary for ops leadership.
 
-### **Visual Architecture**
-<img width="796" height="536" alt="Screenshot 2026-06-05 at 12 57 23 PM" src="https://github.com/user-attachments/assets/b635be35-d0b4-4a28-897a-f26df14ea242" />
+The dashboard includes a demand multiplier slider so leadership can simulate what happens if ticket volume spikes 30% without touching the underlying data.
 
-This system uses a multi-layered architecture where a Streamlit dashboard triggers a Make.com webhook, which pulls live data from Supabase, sends it to a Python Flask API for computation, and returns a visualized forecast with an AI summary back to the user in real-time.
+### Architecture
 
-<img width="1895" height="881" alt="image" src="https://github.com/user-attachments/assets/d0c64184-57f6-43bf-b138-439042e7572c" />
+<img width="796" height="536" alt="Architecture diagram" src="https://github.com/user-attachments/assets/b635be35-d0b4-4a28-897a-f26df14ea242" />
 
+Streamlit triggers a Make.com webhook, which pulls live data from Supabase, sends it to a Flask API for computation, and returns a forecast with an AI summary in real time.
 
-### **The Impact**
-
-*   **Provides data-driven, mathematically derived weekly staffing forecasts.**
-*   Eliminates manual spreadsheet work and subjective capacity planning.
-*   Gives leadership an instant, interactive tool to simulate high-demand scenarios and make proactive staffing decisions.
+<img width="1895" height="881" alt="Dashboard screenshot" src="https://github.com/user-attachments/assets/d0c64184-57f6-43bf-b138-439042e7572c" />
 
 ---
 
-## Project 2: Omni-Channel Ticket Triage Engine
+## Project 2: Ticket Triage & Routing Engine
 
-**Folder:** `/omnichannel_triage_engine`
+**Folder:** `/ticket-triage-routing-engine`
 
-### The Problem
+### The problem
 
-Support requests arrive unstructured from multiple inbound channels (inbound emails, Zoom Contact Center inbound calls, Slack messages, etc.), requiring human analysts to read, classify, and manually triage and generate every single ticket.
+Support requests came in through multiple channels as unstructured text. Someone had to manually read each one, classify it, and route it to the right queue. It didn't scale.
 
-### The Architecture & Solution
+### What I built
 
-* **Normalized Ingestion:** Built a webhook-driven ingestion system to catch unstructured inbound support events.
-* **AI Classification:** Leveraged OpenAI (GPT-4o) with a custom system prompt to analyze the payload, classify the issue type (INC or REQ), and map it to the organization's internal taxonomy.
-* **Deterministic Formatting:** Utilized strict JSON parsing layers to enforce deterministic outputs, ensuring the payload is properly structured for downstream routing.
-* **Observability:** Logged all classification outcomes into a mock staging database (Google Sheets) designed to map 1:1 with ServiceNow schemas.
+A Make.com workflow that receives incoming tickets via webhook, passes them to GPT-4o mini with a custom ITSM classification prompt, parses the structured JSON output, and logs the result to a staging database mapped to our ServiceNow schema.
 
-### Visual Architecture
-![Omni-Channel Triage Workflow](./omnichannel_triage_engine/assets/triage_flow_canvas.png)
-This scenario ingests inbound support events, classifies requests using GPT-4o, validates deterministic JSON outputs, and routes structured payloads into a mock ServiceNow staging layer for downstream handling.
+### Architecture
 
-### The Impact
+![Triage Workflow](./ticket-triage-routing-engine/assets/triage_flow_canvas.png)
 
-* **Estimated to Eliminate ~8-9 hours of manual ticket triage per week.**
-* Achieved zero-touch ticket routing to the correct resolution queues.
+### Sample output
+
+![Staging Log](./ticket-triage-routing-engine/assets/mock_servicenow_logs.png)
 
 ---
 
-## Project 3: Self-Healing Knowledge Base Auditor
+## Project 3: Knowledge Base Auditor & Auto-Generator
 
 **Folder:** `/knowledge_base_auditor`
 
-### The Problem
+### The problem
 
-When a large Knowledge Base (KB) grows outdated, support analysts spend many hours manually drafting net-new, updating existing, or revising/deprecating outdated KB articles.
+The knowledge base was full of duplicates and gaps. Agents either didn't have time to write new articles or wrote ones that already existed. Coverage was inconsistent and getting worse over time.
 
-### The Architecture & Solution
+### What I built
 
-* **Programmatic Knowledge Retrieval:** Transitioned the team from slow, manual Confluence searches to an automated, high-speed PostgreSQL (Supabase) index. This custom database layer programmatically caches existing KB metadata, allowing the AI to instantly query prior resolutions before taking action.
-* **Two-Tier AI Routing:**
-  * **Tier 1 (The Auditor):** Extracts keywords from inbound ticket resolutions, queries the database, and deterministically decides if a duplicate KB exists. If it does, the workflow halts.
-  * **Tier 2 (The Drafter):** If no KB exists, the AI autonomously drafts a new, formatted Wiki in Google Docs.
-* **The "Self-Healing" Loop:** Automatically indexes newly generated AI drafts back into the PostgreSQL database, allowing future workflows to identify and prevent duplicate KB generation.
-* **Reliability & Error Handling:** Built comprehensive Try/Catch error-handler routes around volatile OpenAI endpoints, reducing workflow interruptions caused by API failures.
+A two-stage Make.com workflow. The first stage checks whether a KB article already exists for a resolved ticket by querying a PostgreSQL index. If one exists, the workflow stops. If not, the second stage drafts a new article using GPT and logs it back to the database so future runs won't create duplicates.
 
-### Visual Architecture
-![Knowledge Base Auditor Workflow](./knowledge_base_auditor/assets/auditor_flow_canvas.png)
-This orchestration pipeline processes resolution notes extracted from support tickets, checks a PostgreSQL knowledge index for existing documentation, and conditionally generates new knowledge base articles when no match is found, while logging execution state and API errors for observability.
+### Architecture
 
-### Business Impact
-
-* **Estimated to eliminate 20-30 hours of manual documentation toil per month.**
-* Ensured 100% documentation coverage for new issues while preventing duplicate work.
+![KB Auditor Workflow](./knowledge_base_auditor/assets/auditor_flow_canvas.png)
 
 ---
 
-## Database Schemas (Supabase / PostgreSQL)
+## Database schemas
 
-This architecture relies on persistent state management to track execution logic, halt redundant workflows, and log API failures. Below are the core table schemas powering the observability layer.
+The KB auditor and triage engine rely on a few PostgreSQL tables for state management and logging. Schemas are in each project's `/sql` folder.
 
-### 1. Execution Logs (Audit Trail)
+---
 
-Tracks every decision made by the Tier 1 AI Auditor, providing a clear ROI metric on redundant drafts prevented.
+## Stack
 
-```sql
-CREATE TABLE execution_logs (
-  id uuid DEFAULT gen_random_uuid() PRIMARY KEY,
-  ticket_id VARCHAR(255),
-  status VARCHAR(255),
-  ai_verdict TEXT,
-  created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now())
-);
-
-## Skills Demonstrated
-
-- AI Workflow Engineering
-- Data Modeling
-- API Development
-- Automation Architecture
-- Business Process Automation
-- Prompt Engineering
-- SQL / PostgreSQL
-- Event-Driven Systems
-- Workforce Analytics
-- Operational Forecasting
-- Dashboard Development
+Python, PostgreSQL, Supabase, Flask, Streamlit, Make.com, OpenAI API, Webhooks, Google Sheets, PythonAnywhere
