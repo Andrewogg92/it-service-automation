@@ -1,6 +1,6 @@
 # IT Service Automation Portfolio
 
-This repo contains three automation tools I built at MLB to fix operational problems I kept running into — manual ticket triage, guesswork-based staffing, and a knowledge base that nobody had time to maintain.
+This repo contains three automation tools I built at MLB to fix operational problems I kept running into — manual ticket triage, guesswork-based staffing, and a knowledge base that is too time-consuming to maintain.
 
 ---
 
