@@ -6,8 +6,6 @@ A forecasting tool that replaced a manual weekly Excel process with a live dashb
 
 ## How it works
 
-![Make.com Flow](assets/forecasting_flow_canvas.png)
-
 1. **Streamlit frontend** (`app.py`): the user hits Generate, which sends a JSON payload with a demand multiplier to a Make.com webhook
 2. **Make.com**: triggers a scenario that pulls four tables from Supabase (employees, demand history, task weights, calendar events), bundles them into a single JSON object, and POSTs it to the Flask API
 3. **Flask API** (`flask_app.py`): receives the data, calculates baseline capacity, deducts for overlapping travel and PTO, multiplies demand history by task weights, and returns a forecast with a weekly summary
