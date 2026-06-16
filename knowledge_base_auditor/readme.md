@@ -17,7 +17,7 @@ When a resolved ticket comes in via webhook, the workflow runs in two stages:
 5. **Create the Google Doc**: the draft gets written to Google Drive with a standardized title and format
 6. **Index the new draft**: the new article gets logged back to the PostgreSQL index so future runs won't create duplicates
 
-Error handling is built in at the extraction and auditing steps — API failures get caught and logged without breaking the workflow.
+Error handling is built in at the extraction and auditing steps. API failures get caught and logged without breaking the workflow.
 
 ---
 
